@@ -17,8 +17,8 @@ public class Register {
 	private String phone;
 	private double price;
 
-	public Long getId() {
-		return id;
+	public Long getId(Long id) {
+		return this.id;
 	}
 
 	public void setId(Long id) {
@@ -77,7 +77,5 @@ public class Register {
 	public String toString() {
 		return "Register [name=" + name + ", rating=" + rating +", image=" + image + ", address=" + address + ", phone=" + phone + ", price=" + price + "]";
 	}
-	
-	
 
 }

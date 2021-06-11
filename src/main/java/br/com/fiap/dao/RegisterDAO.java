@@ -1,7 +1,6 @@
 package br.com.fiap.dao;
 
 import br.com.fiap.model.Register;
-import br.com.fiap.model.Setup;
 import br.com.fiap.utils.JPAUtil;
 
 import javax.persistence.EntityManager;
@@ -28,16 +27,37 @@ public class RegisterDAO {
 
 	public Register findById(Long id) {
 		EntityManager manager = JPAUtil.getEntityManager();
-		return manager.find(Register.class, id);
+		Register register = null;
+		try {
+			register = manager.find(Register.class, id);
+		} finally {
+			manager.close();
+		}
+		return register;
 	}
 
-	public void update(Setup setup) {
+	public void update(Register register) {
 		EntityManager manager = JPAUtil.getEntityManager();
-		manager.getTransaction().begin();
-		manager.merge(setup);
-		manager.flush();
-		manager.getTransaction().commit();
-
-		manager.close();
+		try {
+			manager.getTransaction().begin();
+			manager.merge(register);
+			manager.flush();
+			manager.getTransaction().commit();
+		} finally {
+			manager.close();
+		}
 	}
+
+	public void delete(Long id) {
+		EntityManager manager = JPAUtil.getEntityManager();
+		try {
+			manager.getTransaction().begin();
+			Register register = manager.find(Register.class, id);
+			manager.remove(register);
+			manager.getTransaction().commit();
+		} finally {
+			manager.close();
+		}
+	}
+
 }
