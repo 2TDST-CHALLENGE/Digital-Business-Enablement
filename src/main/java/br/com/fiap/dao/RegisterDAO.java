@@ -1,12 +1,12 @@
 package br.com.fiap.dao;
 
-import java.util.List;
+import br.com.fiap.model.Register;
+import br.com.fiap.model.Setup;
+import br.com.fiap.utils.JPAUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-
-import br.com.fiap.model.Register;
-import br.com.fiap.utils.JPAUtil;
+import java.util.List;
 
 public class RegisterDAO {
 
@@ -17,7 +17,6 @@ public class RegisterDAO {
 		manager.getTransaction().commit();
 		
 		manager.close();
-		
 	}
 
 	public List<Register> getAll() {
@@ -26,16 +25,19 @@ public class RegisterDAO {
 		TypedQuery<Register> query = manager.createQuery(jpql, Register.class);
 		return query.getResultList();		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
+	public Register findById(Long id) {
+		EntityManager manager = JPAUtil.getEntityManager();
+		return manager.find(Register.class, id);
+	}
+
+	public void update(Setup setup) {
+		EntityManager manager = JPAUtil.getEntityManager();
+		manager.getTransaction().begin();
+		manager.merge(setup);
+		manager.flush();
+		manager.getTransaction().commit();
+
+		manager.close();
+	}
 }
