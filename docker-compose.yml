@@ -13,12 +13,10 @@ services:
     volumes:
       - db:/var/lib/mysql
 
-  dimdim-backend:
+  backend:
     depends_on:
       - mysqldb
     build: .
-    external_links:
-      - dimdim-frontend
     restart: on-failure
     env_file: ./.env
     ports:
