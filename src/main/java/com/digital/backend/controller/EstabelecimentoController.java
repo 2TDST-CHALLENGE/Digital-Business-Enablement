@@ -28,7 +28,7 @@ public class EstabelecimentoController {
     EstabelecimentoRepository estabelecimentoRepository;
 
     @GetMapping("/estabelecimentos")
-    public ResponseEntity<List<Estabelecimento>> getAllEstabelecimentos(@RequestParam String nome) {
+    public ResponseEntity<List<Estabelecimento>> getAllEstabelecimentos(@RequestParam(required = false) String nome) {
         try {
             List<Estabelecimento> estabelecimentos = new ArrayList<Estabelecimento>();
 
