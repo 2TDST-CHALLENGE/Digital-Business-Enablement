@@ -106,7 +106,7 @@ O Amazon Route 53 é um web service Domain Name System (DNS) na nuvem altamente 
 These are APIs that we need to provide:
 
 ```yaml
-Methods	    Urls                            Actions
+Methods	    Urls                                    Actions
 
 POST        /api/estabelecimento                    create new Tutorial
 GET         /api/estabelecimento                    retrieve all estabelecimento
