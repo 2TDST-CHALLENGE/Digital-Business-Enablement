@@ -110,8 +110,8 @@ Methods	    Urls                            Actions
 
 POST        /api/estabelecimento                    create new Tutorial
 GET         /api/estabelecimento                    retrieve all estabelecimento
-GET         /api/estabelecimento/:id	              retrieve a Tutorial by :id
-PUT         /api/estabelecimento/:id	              update a Tutorial by :id
+GET         /api/estabelecimento/:id                retrieve a Tutorial by :id
+PUT         /api/estabelecimento/:id                update a Tutorial by :id
 DELETE	    /api/estabelecimento/:id                delete a Tutorial by :id
 DELETE	    /api/estabelecimento                    delete all estabelecimento
 GET         /api/estabelecimento/published          find all published estabelecimento
